@@ -17,10 +17,10 @@ app.get('/hello', (req, res) => {
     res.send("Hello itt az Express webszerver!");
 })
 
-app.get('/api.courses', (req, res) => {
+app.get('/api/courses', (req, res) => {
     res.json(courses);
 })
-app.get('/api.courses/:id',(req,res)=>{
+app.get('/api/courses/:id',(req,res)=>{
     //Keresés  a tömbben  ID (URL paraméter alapján)
     const course =courses.find(c => c.id == parseInt(req.params.id));
     //A keresett elem nem található statusz kód {400} statusz kód és hibaüzenet visszaadása 
@@ -28,7 +28,7 @@ app.get('/api.courses/:id',(req,res)=>{
     res.json(course);//Visszadjuk a keresett kurzust 
 })
 //POST végpont kurzus adatok küldésére a szerernek
-app.post('/api.courses', (req,res)=>{
+app.post('/api/courses', (req,res)=>{
 //új kurzus létrehozása (az id automatikus növelése)
    
         const course ={
@@ -42,7 +42,7 @@ res.status(200).json({ message: "új elem hozzáadva", data:req.body}); //Az új
 })
 
 //Delete végpont a kurzus
-app.delete('/api.course/:id',(req,res)=>{
+app.delete('/api/course/:id',(req,res)=>{
     //Keresés  a tömbben  ID (URL paraméter alapján)
     const course =courses.find(c => c.id == parseInt(req.params.id));
     //A keresett elem nem található statusz kód {400} statusz kód és hibaüzenet visszaadása 
